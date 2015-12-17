@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 14 for Windows Desktop
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE", "BE\BE.csproj", "{071427CA-FE5C-4BBE-909C-791884D18093}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{8D7C8B1E-6943-4336-8A38-7713107C3E50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS", "DS\DS.csproj", "{CE74A9F4-9C26-4E38-9A26-A78DDACC3999}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{071427CA-FE5C-4BBE-909C-791884D18093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{071427CA-FE5C-4BBE-909C-791884D18093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{071427CA-FE5C-4BBE-909C-791884D18093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{071427CA-FE5C-4BBE-909C-791884D18093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D7C8B1E-6943-4336-8A38-7713107C3E50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7C8B1E-6943-4336-8A38-7713107C3E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7C8B1E-6943-4336-8A38-7713107C3E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7C8B1E-6943-4336-8A38-7713107C3E50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE74A9F4-9C26-4E38-9A26-A78DDACC3999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE74A9F4-9C26-4E38-9A26-A78DDACC3999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE74A9F4-9C26-4E38-9A26-A78DDACC3999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE74A9F4-9C26-4E38-9A26-A78DDACC3999}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
