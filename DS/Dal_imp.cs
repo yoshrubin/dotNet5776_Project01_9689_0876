@@ -161,17 +161,29 @@ namespace DS
 
         public void updateDish(Dish x)
         {
-           
+            foreach (Dish item in dishList)
+                if (item.dishID == x.dishID)
+                {
+                    item.updateDish(x);
+                }
         }
 
         public void updateOrdDish(Ordered_Dish x)
         {
-            
+            foreach (Ordered_Dish item in ordDishList)
+                if (item.ordDishID == x.ordDishID)
+                {
+                    item.updateOrdDish(x);
+                }
         }
 
         public void updateOrder(Order x)
         {
-           
+            foreach (Order item in orderList)
+                if (item.orderID == x.orderID)
+                {
+                    item.updateOrder(x);
+                }
         }
 
         /* PURPOSE OF BELOW FUNCTIONS UNKNOWN */
