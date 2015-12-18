@@ -42,5 +42,16 @@ namespace BE
             Random r = new Random();
             orderID = r.Next(1, 10000);
         }
+        public void orderUpdate(Order x)
+        {
+            orderTime = x.orderTime;
+            orderBranch = x.orderBranch;
+            orderHechserOrder = x.orderHechserOrder;
+            orderStaff = x.orderStaff;
+            orderCustomer = x.orderCustomer;
+            orderCustAddress = x.orderCustAddress;
+            orderCustLocation = x.orderCustLocation;
+            orderCustCC = x.orderCustCC;
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace BE
         public string dishName { get; private set; }
         public int dishPrice { get; private set; }
         public dishSize dishSizeDish { get; private set; }
-        public dishHechser dishHechserDIsh { get; private set; }
+        public dishHechser dishHechserDish { get; private set; }
         public override string ToString()
         {
             string temp = null;
@@ -26,6 +26,13 @@ namespace BE
         {
             Random r = new Random();
             dishID = r.Next(1, 100);
+        }
+        public void updateDish(Dish x)
+        {
+            dishName = x.dishName;
+            dishPrice = x.dishPrice;
+            dishSizeDish = x.dishSizeDish;
+            dishHechserDish = x.dishHechserDish;
         }
     }
 }
