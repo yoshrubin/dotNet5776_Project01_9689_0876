@@ -27,13 +27,5 @@ namespace BE
             Random r = new Random();
             dishID = r.Next(1, 100);
         }
-        public void updateDish(Dish x)
-        {
-            dishName = x.dishName;
-            dishPrice = x.dishPrice;
-            dishSizeDish = x.dishSizeDish;
-            dishHechserDish = x.dishHechserDish;
-        }
-        }
     }
 }

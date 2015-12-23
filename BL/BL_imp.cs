@@ -10,7 +10,8 @@ namespace BL
 {
     class BL_imp : DataSource, IBL
     {
-        public void addBranch(Branch x)
+        //ADD
+        public bool addBranch(Branch x)
         {
             bool available = true;
             if (x.branchID > 0)
@@ -36,9 +37,10 @@ namespace BL
             }
             if (available) // add to the list.
                 branchList.Add(x);
+            return available;
         }
 
-        public void addDish(Dish x)
+        public bool addDish(Dish x)
         {
             bool available = true;
             if (x.dishID > 0)
@@ -64,9 +66,10 @@ namespace BL
             }
             if (available) // add to the list.
                 dishList.Add(x);
+            return available;
         }
 
-        public void addOrdDish(Ordered_Dish x)
+        public bool addOrdDish(Ordered_Dish x)
         {
             bool available = true;
             if (x.ordDishID > 0)
@@ -92,9 +95,10 @@ namespace BL
             }
             if (available) // add to the list.
                 ordDishList.Add(x);
+            return available;
         }
 
-        public void addOrder(Order x)
+        public bool addOrder(Order x)
         {
             bool available = true;
             if (x.orderID > 0)
@@ -120,87 +124,154 @@ namespace BL
             }
             if (available) // add to the list.
                 orderList.Add(x);
+            return available;
         }
-
-        public void deleteBranch(int x)
+        //DELETE
+        public bool deleteBranch(int x)
         {
-            foreach (Branch item in branchList)
-                if (x == item.branchID)
-                    branchList.Remove(item);
+            Branch tempB = getBranch(x);
+            if (tempB != null)
+            {
+                branchList.Remove(tempB);
+                return true;
+            }
+            else
+                return false;
         }
 
-        public void deleteDish(int x)
+        public bool deleteDish(int x)
+        {
+            Dish tempD = getDish(x);
+            if (tempD == null)
+                return false;
+            else
+            {
+                dishList.Remove(tempD);
+                return true;
+            }
+        }
+
+        public bool deleteOrdDish(int x)
+        {
+            Ordered_Dish tempOD = getOrdDish(x);
+            if (tempOD == null)
+                return false;
+            else
+            {
+                ordDishList.Remove(tempOD);
+                return true;
+            }
+        }
+
+        public bool deleteOrder(int x)
+        {
+            Order tempO = getOrder(x);
+            if (tempO == null)
+                return false;
+            else
+            {
+                orderList.Remove(tempO);
+                return true;
+            }
+        }
+        //UPDATE
+        public bool updateBranch(Branch x)
+        {
+            Branch tempB = getBranch(x.branchID);
+            if (tempB != null)
+            {
+                branchList.Remove(tempB);
+                branchList.Add(x);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool updateDish(Dish x)
+        {
+            Dish tempD = getDish(x.dishID);
+            if (tempD != null)
+            {
+                dishList.Remove(tempD);
+                dishList.Add(x);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool updateOrdDish(Ordered_Dish x)
+        {
+            Ordered_Dish tempOD = getOrdDish(x.ordDishID);
+            if (tempOD != null)
+            {
+                ordDishList.Remove(tempOD);
+                ordDishList.Add(x);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool updateOrder(Order x)
+        {
+            Order tempO = getOrder(x.orderID);
+            if (tempO != null)
+            {
+                orderList.Remove(tempO);
+                orderList.Add(x);
+                return true;
+            }
+            else
+                return false;
+        }
+        //SUM
+        public List<Branch> sumBranch()
+        {
+            return branchList;
+        }
+
+        public List<Dish> sumDish()
+        {
+            return dishList;
+        }
+
+        public List<Order> sumOrder()
+        {
+            return orderList;
+        }
+        //GETS
+        public Dish getDish(int dishID)
         {
             foreach (Dish item in dishList)
-                if (x == item.dishID)
-                    dishList.Remove(item);
+                if (item.dishID == dishID)
+                    return item;
+            return null;
         }
 
-        public void deleteOrdDish(int x)
-        {
-            foreach (Ordered_Dish item in ordDishList)
-                if (x == item.ordDishID)
-                    ordDishList.Remove(item);
-        }
-
-        public void deleteOrder(int x)
+        public Order getOrder(int orderID)
         {
             foreach (Order item in orderList)
-                if (x == item.orderID)
-                    orderList.Remove(item);
+                if (item.orderID == orderID)
+                    return item;
+            return null;
         }
 
-        public void updateBranch(Branch x)
+        public Ordered_Dish getOrdDish(int OrdDishID)
+        {
+            foreach (Ordered_Dish item in ordDishList)
+                if (item.ordDishID == OrdDishID)
+                    return item;
+            return null;
+        }
+
+        public Branch getBranch(int branchID)
         {
             foreach (Branch item in branchList)
-                if (item.branchID == x.branchID)
-                {
-                    item.updateBranch(x);
-                }
-        }
-
-        public void updateDish(Dish x)
-        {
-            foreach (Dish item in dishList)
-                if (item.dishID == x.dishID)
-                {
-                    item.updateDish(x);
-                }
-        }
-
-        public void updateOrdDish(Ordered_Dish x)
-        {
-            foreach (Ordered_Dish item in ordDishList)
-                if (item.ordDishID == x.ordDishID)
-                {
-                    item.ordDishUpdate(x);
-                }
-        }
-
-        public void updateOrder(Order x)
-        {
-            foreach (Order item in orderList)
-                if (item.orderID == x.orderID)
-                {
-                    item.orderUpdate(x);
-                }
-        }
-
-        /* PURPOSE OF BELOW FUNCTIONS UNKNOWN */
-
-        public void sumBranch(List<Branch> x)
-        {
-
-        }
-
-        public void sumDish(List<Dish> x)
-        {
-
-        }
-
-        public void sumOrder(List<Order> x)
-        {
-
+                if (item.branchID == branchID)
+                    return item;
+            return null;
         }
 
         public double SumMoneyDishes(List<Ordered_Dish> x)
@@ -212,7 +283,7 @@ namespace BL
                 for (int i = 0; i < item.ordDishNum; i++)
                 {
                     sumMoney += temp;
-                }           
+                }
             }
             return sumMoney;
         }
@@ -227,32 +298,32 @@ namespace BL
 
         public bool tooLittleHoly(orderHechser x, dishHechser y)
         {
-    
+
         }
 
         public List<Order> chooseOrder(List<Order> x, Func<Order, bool> predicate)
         {
-            
+
         }
 
         public double moniesOrder(List<Dish> x)
         {
-            
+
         }
 
         public double moniesTime(List<Order> x)
         {
-            
+
         }
 
         public double moniesPlace(List<Branch> x)
         {
-            
+
         }
 
         public bool tooYoung(Order x)
         {
-           
+
         }
 
         //EXTRA

@@ -39,15 +39,5 @@ namespace BE
             Random r = new Random();
             branchID = r.Next(1, 1000);
         }
-        public void updateBranch (Branch x)
-        {
-            branchName = x.branchName;
-            branchAddress = x.branchAddress;
-            branchPhoneNum = x.branchPhoneNum;
-            branchManager = x.branchManager;
-            branchEmployee = x.branchEmployee;
-            branchDeliveryFree = x.branchDeliveryFree;
-            branchHechserBranch = x.branchHechserBranch;
-        }
     }
 }

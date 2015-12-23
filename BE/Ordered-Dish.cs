@@ -22,10 +22,5 @@ namespace BE
             Random r = new Random();
             ordDishID = r.Next(1, 1000);
         }
-        public void ordDishUpdate (Ordered_Dish x)
-        {
-            ordDishNum = x.ordDishNum;
-            ordDishTypeNum = x.ordDishTypeNum;
-        }
     }
 }

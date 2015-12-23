@@ -12,25 +12,29 @@ namespace BL
     public interface IBL
     {
         //DISH
-        void addDish(Dish x);
-        void deleteDish(int x);
-        void updateDish(Dish x);
+        bool addDish(Dish x);
+        bool deleteDish(int x);
+        bool updateDish(Dish x);
+        Dish getDish(int dishID);
         //ORDER
-        void addOrder(Order x);
-        void deleteOrder(int x);
-        void updateOrder(Order x);
+        bool addOrder(Order x);
+        bool deleteOrder(int x);
+        bool updateOrder(Order x);
+        Order getOrder(int orderID);
         //Ordered-Dish
-        void addOrdDish(Ordered_Dish x);
-        void updateOrdDish(Ordered_Dish x);
-        void deleteOrdDish(int x);
+        bool addOrdDish(Ordered_Dish x);
+        bool updateOrdDish(Ordered_Dish x);
+        bool deleteOrdDish(int x);
+        Ordered_Dish getOrdDish(int OrdDishID);
         //BRANCH
-        void addBranch(Branch x);
-        void deleteBranch(int x);
-        void updateBranch(Branch x);
+        bool addBranch(Branch x);
+        bool deleteBranch(int x);
+        bool updateBranch(Branch x);
+        Branch getBranch(int branchID);
         //MUTIPLE
-        void sumOrder(List<Order> x);
-        void sumDish(List<Dish> x);
-        void sumBranch(List<Branch> x);
+        List<Order> sumOrder();
+        List<Dish> sumDish();
+        List<Branch> sumBranch();
         //EXTRA
         double SumMoneyDishes(List<Ordered_Dish> x);
         bool tooMuchMonies(double x);
@@ -40,8 +44,6 @@ namespace BL
         double moniesTime(List<Order> x);
         double moniesPlace(List<Branch> x);
         bool tooYoung(Order x); // Need to get age.
-
-
     }
     public class BL
     {
