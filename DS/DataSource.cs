@@ -13,5 +13,12 @@ namespace DS
         public static List<Order> orderList;
         public static List<Dish> dishList;
         public static List<Ordered_Dish> ordDishList;
+        public DataSource()
+        {
+            branchList = new List<Branch>();
+            orderList = new List<Order>();
+            dishList = new List<Dish>();
+            ordDishList = new List<Ordered_Dish>();
+        }
     }
 }

@@ -10,7 +10,9 @@ namespace BL
 {
     class BL_imp : DataSource, IBL
     {
+        #region // Functions similar to IDAL
         //ADD
+        #region // add functions
         public bool addBranch(Branch x)
         {
             bool available = true;
@@ -126,7 +128,9 @@ namespace BL
                 orderList.Add(x);
             return available;
         }
+        #endregion
         //DELETE
+        #region // delete functions
         public bool deleteBranch(int x)
         {
             Branch tempB = getBranch(x);
@@ -174,7 +178,9 @@ namespace BL
                 return true;
             }
         }
+        #endregion
         //UPDATE
+        #region // update functions
         public bool updateBranch(Branch x)
         {
             Branch tempB = getBranch(x.branchID);
@@ -226,7 +232,9 @@ namespace BL
             else
                 return false;
         }
+        #endregion
         //SUM
+        #region // Sum functions
         public List<Branch> sumBranch()
         {
             return branchList;
@@ -241,7 +249,9 @@ namespace BL
         {
             return orderList;
         }
-        //GETS
+        #endregion
+        //GETS - Search engines to find the class in it's respective list.
+        #region // Get functions
         public Dish getDish(int dishID)
         {
             foreach (Dish item in dishList)
@@ -273,6 +283,8 @@ namespace BL
                     return item;
             return null;
         }
+        #endregion
+        #endregion
 
         public double SumMoneyDishes(List<Ordered_Dish> x)
         {
@@ -303,7 +315,7 @@ namespace BL
 
         public List<Order> chooseOrder(List<Order> x, Func<Order, bool> predicate)
         {
-
+            var 
         }
 
         public double moniesOrder(List<Dish> x)
