@@ -9,6 +9,19 @@ namespace BE
     public enum branchHechser { normal, middle, high }; 
     public class Branch
     {
+        //ctor
+        public Branch(int branchID, string branchName, string branchAddress, long branchPhoneNum, string branchManager, int branchEmployee, int branchDeliveryFree, branchHechser branchHechserBranch)
+        {
+            this.branchID = branchID;
+            this.branchName = branchName;
+            this.branchAddress = branchAddress;
+            this.branchPhoneNum = branchPhoneNum;
+            this.branchManager = branchManager;
+            this.branchEmployee = branchEmployee;
+            this.branchDeliveryFree = branchDeliveryFree;
+            this.branchHechserBranch = branchHechserBranch;
+        }
+        //properties
         public int branchID { get; private set; }
         public string branchName { get; private set; }
         public string branchAddress { get; private set; }
@@ -17,6 +30,9 @@ namespace BE
         public int branchEmployee { get; private set; }
         public int branchDeliveryFree { get; private set; }
         public branchHechser branchHechserBranch { get; private set; }
+        public List<Dish> listDishforBranch { get; private set; }
+        public List<Order> listOrderforBranch { get; private set; }
+        //functions
         public override string ToString()
         {
             string temp = null;

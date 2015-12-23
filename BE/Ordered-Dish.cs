@@ -8,13 +8,22 @@ namespace BE
 {
     public class Ordered_Dish
     {
-        public int ordDishID { get; private set; }
-        public int ordDishNum { get; private set; }
-        public int ordDishTypeNum { get; private set; }
+        //ctor
+        public Ordered_Dish(int ordDishID, int ordDishNum, int ordDishAmount)
+        {
+            this.ordDishID = ordDishID;
+            this.ordDishNum = ordDishNum;
+            this.ordDishAmount = ordDishAmount;
+        }
+        //properties
+        public int ordDishID { get; private set; } // Same ID as the Order
+        public int ordDishNum { get; private set; } // Same ID as the Dish
+        public int ordDishAmount { get; private set; } // The amount of said Dish
+        //funcs
         public override string ToString()
         {
             string temp = null;
-            temp += ordDishID.ToString() + " ordered dish num: " + ordDishNum.ToString() + " ordered dish amount: " + ordDishTypeNum.ToString();
+            temp += ordDishID.ToString() + " ordered dish num: " + ordDishNum.ToString() + " ordered dish amount: " + ordDishAmount.ToString();
             return temp;
         }
         public void randOrdDishNum()

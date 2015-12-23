@@ -10,11 +10,22 @@ namespace BE
     public enum dishHechser { normal, middle, high }; // Check if it has to be in Class?
     public class Dish
     {
+        //ctor
+        public Dish(int dishID, string dishName, double dishPrice, dishSize dishSizeDish, dishHechser dishHechserDish)
+        {
+            this.dishID = dishID;
+            this.dishName = dishName;
+            this.dishPrice = dishPrice;
+            this.dishSizeDish = dishSizeDish;
+            this.dishHechserDish = dishHechserDish;
+        }
+        //properties
         public int dishID { get; private set; }
         public string dishName { get; private set; }
-        public int dishPrice { get; private set; }
+        public double dishPrice { get; private set; }
         public dishSize dishSizeDish { get; private set; }
         public dishHechser dishHechserDish { get; private set; }
+        //func
         public override string ToString()
         {
             string temp = null;

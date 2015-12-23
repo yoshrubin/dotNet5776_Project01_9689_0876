@@ -310,7 +310,7 @@ namespace BL
 
         public bool tooLittleHoly(orderHechser x, dishHechser y)
         {
-          if ((int)x.orderHechser > (int)y.dishHechser)//dish is less holy then order
+          if ((int)x > (int)y)//dish is less holy then order
             return true;//meaning dish isnt holy enough
           else
             return false;//meaning dish is good
@@ -326,22 +326,25 @@ namespace BL
 
         public double moniesOrder()
         {
-
+            throw new NotImplementedException();
         }
 
         public double moniesTime()
         {
-
+            throw new NotImplementedException();
         }
 
         public double moniesPlace()
         {
-
+            throw new NotImplementedException();
         }
 
         public bool tooYoung(Order x)
         {
-
+            if (x.orderAge < 18)
+                return true;
+            else
+                return false;
         }
 
         //EXTRA
@@ -354,5 +357,65 @@ namespace BL
             }
             return 0;
         }
+
+        public Dish mostOrderedDish()
+        {
+            int counter = 0;
+            Dish bestDish = null;
+            foreach (Ordered_Dish item in ordDishList)
+            {
+                if (item.ordDishNum > counter)
+                {
+                    counter = item.ordDishNum;
+                    bestDish = getDish(item.ordDishID);
+                }
+            }
+            return bestDish;
+        }//Finds the most ordered dish per Order
+
+        public List<Dish> holierThanThou()
+        {
+            var queryHolyDish = from dish in dishList
+                                where (int)dish.dishHechserDish >= 2 //he'll prefer a better hescher, but will take high.
+                                select dish;
+            return (List<Dish>)queryHolyDish;
+        } //offers the dishes available for the holy.
+
+        public bool tooLittleMoniesDelivery(double x)
+        {
+            if (x < 20)
+                return true; // true that the order is too low for DELIVARY
+            else
+                return false;
+        } // checks if order is high enough for delivery.
+
+        public List<Dish> americanMenu()
+        {
+            var queryAmericanMenu = from dish in dishList
+                                    where (int)dish.dishSizeDish >= 2 // he'll prefer a larger dish, but will take large.
+                                    select dish;
+            return (List<Dish>)queryAmericanMenu;
+        }//Finds the menu for the Americans.
+
+        public string managerOfTheMonth()
+        {
+            double mostMoney = 0; // Highest amount of money for the Branch
+            double sumOrdDishes = 0; // Sum of money from all the ordered dishes of a branch
+            Branch bestBranch = null;
+            foreach (Branch branchitem in branchList)
+            {
+                foreach (Order item in branchitem.listOrderforBranch)
+                {
+                    sumOrdDishes += SumMoneyDishes(item.listofOrderedDishes);
+                }
+                if (sumOrdDishes > mostMoney)
+                {
+                    mostMoney = sumOrdDishes;
+                    bestBranch = branchitem; // found the bestBranch as of now
+                }
+                sumOrdDishes = 0;
+            }
+            return bestBranch.branchManager;
+        }//Finds the manager whose branch made the most money
     }
 }

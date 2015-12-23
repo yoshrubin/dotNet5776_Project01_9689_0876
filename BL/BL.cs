@@ -39,10 +39,10 @@ namespace BL
         double SumMoneyDishes(List<Ordered_Dish> x);
         bool tooMuchMonies(double x);
         bool tooLittleHoly(orderHechser x, dishHechser y);
-        List<Order> chooseOrder(List<Order> x, Func<Order, bool> predicate); // verify
-        double moniesOrder(List<Dish> x);
-        double moniesTime(List<Order> x);
-        double moniesPlace(List<Branch> x);
+        List<Order> chooseOrder(Func<Order, bool> predicate = null); // verify
+        double moniesOrder();
+        double moniesTime();
+        double moniesPlace();
         bool tooYoung(Order x); // Need to get age.
     }
     public class BL
