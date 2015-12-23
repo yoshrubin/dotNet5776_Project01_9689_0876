@@ -11,27 +11,23 @@ namespace DAL
     {
         //DISH
         void addDish(Dish x);
-        void deleteDish(Dish x);
+        void deleteDish(int x);
         void updateDish(Dish x);
         //ORDER
         void addOrder(Order x);
-        void deleteOrder(Order x);
+        void deleteOrder(int x);
         void updateOrder(Order x);
         //Ordered-Dish
         void addOrdDish(Ordered_Dish x);
         void updateOrdDish(Ordered_Dish x);
-        void deleteOrdDish(Ordered_Dish x);
+        void deleteOrdDish(int x);
         //BRANCH
         void addBranch(Branch x);
-        void deleteBranch(Branch x);
+        void deleteBranch(int x);
         void updateBranch(Branch x);
         //MUTIPLE
         void sumOrder(List<Order> x);
         void sumDish(List<Dish> x);
         void sumBranch(List<Branch> x);
-    }
-
-    public class DAL
-    {
     }
 }

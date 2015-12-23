@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
-using DAL;
+using DS;
 
-namespace DS
+namespace BL
 {
-    class Dal_imp : DataSource, IDAL
+    class BL_imp : DataSource, IBL
     {
         public void addBranch(Branch x)
         {
@@ -152,7 +152,7 @@ namespace DS
 
         public void updateBranch(Branch x)
         {
-           foreach(Branch item in branchList)
+            foreach (Branch item in branchList)
                 if (item.branchID == x.branchID)
                 {
                     item.updateBranch(x);
@@ -161,7 +161,7 @@ namespace DS
 
         public void updateDish(Dish x)
         {
-           foreach (Dish item in dishList)
+            foreach (Dish item in dishList)
                 if (item.dishID == x.dishID)
                 {
                     item.updateDish(x);
@@ -179,8 +179,8 @@ namespace DS
 
         public void updateOrder(Order x)
         {
-           foreach (Order item in orderList)
-            if (item.orderID == x.orderID)
+            foreach (Order item in orderList)
+                if (item.orderID == x.orderID)
                 {
                     item.orderUpdate(x);
                 }
@@ -190,18 +190,80 @@ namespace DS
 
         public void sumBranch(List<Branch> x)
         {
-            throw new NotImplementedException();
+
         }
 
         public void sumDish(List<Dish> x)
         {
-            throw new NotImplementedException();
+
         }
 
         public void sumOrder(List<Order> x)
         {
-            throw new NotImplementedException();
+
         }
 
+        public double SumMoneyDishes(List<Ordered_Dish> x)
+        {
+            double sumMoney = 0;
+            foreach (Ordered_Dish item in x)
+            {
+                double temp = findDishPrice(item.ordDishID); // sending to func we created to find and return dish price.
+                for (int i = 0; i < item.ordDishNum; i++)
+                {
+                    sumMoney += temp;
+                }           
+            }
+            return sumMoney;
+        }
+
+        public bool tooMuchMonies(double x)
+        {
+            if (x > 2000)
+                return true; // true that the order is too expensive
+            else
+                return false;
+        }
+
+        public bool tooLittleHoly(orderHechser x, dishHechser y)
+        {
+    
+        }
+
+        public List<Order> chooseOrder(List<Order> x, Func<Order, bool> predicate)
+        {
+            
+        }
+
+        public double moniesOrder(List<Dish> x)
+        {
+            
+        }
+
+        public double moniesTime(List<Order> x)
+        {
+            
+        }
+
+        public double moniesPlace(List<Branch> x)
+        {
+            
+        }
+
+        public bool tooYoung(Order x)
+        {
+           
+        }
+
+        //EXTRA
+        public double findDishPrice(int x)
+        {
+            foreach (Dish item in dishList)
+            {
+                if (x == item.dishID)
+                    return item.dishPrice;
+            }
+            return 0;
+        }
     }
 }

@@ -34,5 +34,6 @@ namespace BE
             dishSizeDish = x.dishSizeDish;
             dishHechserDish = x.dishHechserDish;
         }
+        }
     }
 }
