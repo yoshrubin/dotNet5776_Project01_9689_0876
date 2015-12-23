@@ -310,7 +310,10 @@ namespace BL
 
         public bool tooLittleHoly(orderHechser x, dishHechser y)
         {
-
+          if ((int)x.orderHechser > (int)y.dishHechser)//dish is less holy then order
+            return true;//meaning dish isnt holy enough
+          else
+            return false;//meaning dish is good
         }
 
         public List<Order> chooseOrder(Func<Order, bool> predicate = null)
