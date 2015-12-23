@@ -313,22 +313,25 @@ namespace BL
 
         }
 
-        public List<Order> chooseOrder(List<Order> x, Func<Order, bool> predicate)
+        public List<Order> chooseOrder(Func<Order, bool> predicate = null)
         {
-            var 
+            var queryAllOrders = from orders in orderList
+                                 where (predicate(orders))
+                                 select orders;
+            return (List<Order>)queryAllOrders;
         }
 
-        public double moniesOrder(List<Dish> x)
-        {
-
-        }
-
-        public double moniesTime(List<Order> x)
+        public double moniesOrder()
         {
 
         }
 
-        public double moniesPlace(List<Branch> x)
+        public double moniesTime()
+        {
+
+        }
+
+        public double moniesPlace()
         {
 
         }
