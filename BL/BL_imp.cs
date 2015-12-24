@@ -324,6 +324,7 @@ namespace BL
             return (List<Order>)queryAllOrders;
         }
 
+        #region // Not Sure how to Implement w/ Grouping
         public double moniesOrder()
         {
             throw new NotImplementedException();
@@ -346,7 +347,8 @@ namespace BL
             else
                 return false;
         }
-
+        #endregion
+        
         //EXTRA
         public double findDishPrice(int x)
         {
@@ -372,7 +374,7 @@ namespace BL
             }
             return bestDish;
         }//Finds the most ordered dish per Order
-
+        
         public List<Dish> holierThanThou()
         {
             var queryHolyDish = from dish in dishList
@@ -399,6 +401,11 @@ namespace BL
 
         public string managerOfTheMonth()
         {
+            return branchSuccess().branchManager;
+        }//Finds the manager whose branch made the most money
+      
+        public Branch branchSuccessMonth()
+        {
             double mostMoney = 0; // Highest amount of money for the Branch
             double sumOrdDishes = 0; // Sum of money from all the ordered dishes of a branch
             Branch bestBranch = null;
@@ -406,7 +413,8 @@ namespace BL
             {
                 foreach (Order item in branchitem.listOrderforBranch)
                 {
-                    sumOrdDishes += SumMoneyDishes(item.listofOrderedDishes);
+                    if (item.orderTime.Month == DateTime.Now.Month) // Only consider the orders made within the Month.
+                        sumOrdDishes += SumMoneyDishes(item.listofOrderedDishes);
                 }
                 if (sumOrdDishes > mostMoney)
                 {
@@ -415,7 +423,20 @@ namespace BL
                 }
                 sumOrdDishes = 0;
             }
-            return bestBranch.branchManager;
-        }//Finds the manager whose branch made the most money
+            return bestBranch;
+        }
+
+        public List<Branch> rankBranchPerMonth()
+        {
+            var queryWhatevra = from item in branchList
+                                from item2 in item.listOrderforBranch
+                                where (item2.orderTime.Month == DateTime.Now.Month)
+                                orderby SumMoneyDishes(item2.listofOrderedDishes) descending
+                                select item;
+            return queryWhatevra.ToList<Branch>();
+
+        }
+
+        //FIND OUT HOW TO USE LAMBDA?!?!?!??!?!?!?!?!?!?!?
     }
 }
