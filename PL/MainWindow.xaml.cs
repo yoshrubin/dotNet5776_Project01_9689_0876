@@ -28,9 +28,8 @@ namespace PL
 
         private void addDishClick(object sender, RoutedEventArgs e)
         {
-            string dishName = this.inputTextName.Text;
-            string dishId = this.inputTextId.Text;
-
+            string dishname = this.inputText.Text;
+           
         }
     }
 }
