@@ -12,7 +12,7 @@ namespace DS
     class Dal_imp : DataSource, IDAL
     {
         //ADD
-        public bool addBranch(Branch x)
+        public bool addBranch(Branch x, List<Branch> branchList)
         {
             bool available = true;
             if (x.branchID > 0)
@@ -41,7 +41,7 @@ namespace DS
             return available;
         }
 
-        public bool addDish(Dish x)
+        public bool addDish(Dish x, List<Dish> dishList)
         {
             bool available = true;
             if (x.dishID > 0)
@@ -70,7 +70,7 @@ namespace DS
             return available;
         }
 
-        public bool addOrdDish(Ordered_Dish x)
+        public bool addOrdDish(Ordered_Dish x, List<Ordered_Dish> ordDishList)
         {
             bool available = true;
             if (x.ordDishID > 0)
@@ -99,7 +99,7 @@ namespace DS
             return available;
         }
 
-        public bool addOrder(Order x)
+        public bool addOrder(Order x, List<Order> orderList)
         {
             bool available = true;
             if (x.orderID > 0)
@@ -128,9 +128,9 @@ namespace DS
             return available;
         }
         //DELETE
-        public bool deleteBranch(int x)
+        public bool deleteBranch(int x, List<Branch> branchList)
         {
-            Branch tempB = getBranch(x);
+            Branch tempB = getBranch(x, branchList);
             if (tempB != null)
             {
                 branchList.Remove(tempB);
@@ -140,9 +140,9 @@ namespace DS
                 return false;
         }
 
-        public bool deleteDish(int x)
+        public bool deleteDish(int x, List<Dish> dishList)
         {
-            Dish tempD = getDish(x);
+            Dish tempD = getDish(x, dishList);
             if (tempD == null)
                 return false;
             else
@@ -152,9 +152,9 @@ namespace DS
             }
         }
 
-        public bool deleteOrdDish(int x)
+        public bool deleteOrdDish(int x, List<Ordered_Dish> ordDishList)
         {
-            Ordered_Dish tempOD = getOrdDish(x);
+            Ordered_Dish tempOD = getOrdDish(x, ordDishList);
             if (tempOD == null)
                 return false;
             else
@@ -164,9 +164,9 @@ namespace DS
             }
         }
 
-        public bool deleteOrder(int x)
+        public bool deleteOrder(int x, List<Order> orderList)
         {
-            Order tempO = getOrder(x);
+            Order tempO = getOrder(x, orderList);
             if (tempO == null)
                 return false;
             else
@@ -176,9 +176,9 @@ namespace DS
             }
         }
         //UPDATE
-        public bool updateBranch(Branch x)
+        public bool updateBranch(Branch x, List<Branch> branchList)
         {
-            Branch tempB = getBranch(x.branchID);
+            Branch tempB = getBranch(x.branchID, branchList);
             if (tempB != null)
             {
                 branchList.Remove(tempB);
@@ -189,9 +189,9 @@ namespace DS
                 return false;
         }
 
-        public bool updateDish(Dish x)
+        public bool updateDish(Dish x, List<Dish> dishList)
         {
-            Dish tempD = getDish(x.dishID);
+            Dish tempD = getDish(x.dishID, dishList);
             if (tempD != null)
             {
                 dishList.Remove(tempD);
@@ -202,9 +202,9 @@ namespace DS
                 return false;
         }
 
-        public bool updateOrdDish(Ordered_Dish x)
+        public bool updateOrdDish(Ordered_Dish x, List<Ordered_Dish> ordDishList)
         {
-            Ordered_Dish tempOD = getOrdDish(x.ordDishID);
+            Ordered_Dish tempOD = getOrdDish(x.ordDishID, ordDishList);
             if (tempOD != null)
             {
                 ordDishList.Remove(tempOD);
@@ -215,9 +215,9 @@ namespace DS
                 return false;
         }
 
-        public bool updateOrder(Order x)
+        public bool updateOrder(Order x,List<Order> orderList)
         {
-            Order tempO = getOrder(x.orderID);
+            Order tempO = getOrder(x.orderID, orderList);
             if (tempO != null)
             {
                 orderList.Remove(tempO);
@@ -243,7 +243,7 @@ namespace DS
             return orderList;
         }
         //GETS
-        public Dish getDish(int dishID)
+        public Dish getDish(int dishID, List<Dish> dishList)
         {
             foreach (Dish item in dishList)
                 if (item.dishID == dishID)
@@ -251,7 +251,7 @@ namespace DS
             return null;
         }
 
-        public Order getOrder(int orderID)
+        public Order getOrder(int orderID, List<Order> orderList)
         {
             foreach (Order item in orderList)
                 if (item.orderID == orderID)
@@ -259,7 +259,7 @@ namespace DS
             return null;
         }
 
-        public Ordered_Dish getOrdDish(int OrdDishID)
+        public Ordered_Dish getOrdDish(int OrdDishID, List<Ordered_Dish> ordDishList)
         {
             foreach (Ordered_Dish item in ordDishList)
                 if (item.ordDishID == OrdDishID)
@@ -267,7 +267,7 @@ namespace DS
             return null;
         }
 
-        public Branch getBranch(int branchID)
+        public Branch getBranch(int branchID, List<Branch> branchList)
         {
             foreach (Branch item in branchList)
                 if (item.branchID == branchID)
