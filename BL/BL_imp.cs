@@ -10,10 +10,10 @@ namespace BL
 {
     class BL_imp : DataSource, IBL
     {
-        #region // Functions similar to IDAL
+        //Same as Dal_imp
+        #region
         //ADD
-        #region // add functions
-        public bool addBranch(Branch x)
+        public bool addBranch(Branch x, List<Branch> branchList)
         {
             bool available = true;
             if (x.branchID > 0)
@@ -42,7 +42,7 @@ namespace BL
             return available;
         }
 
-        public bool addDish(Dish x)
+        public bool addDish(Dish x, List<Dish> dishList)
         {
             bool available = true;
             if (x.dishID > 0)
@@ -71,7 +71,7 @@ namespace BL
             return available;
         }
 
-        public bool addOrdDish(Ordered_Dish x)
+        public bool addOrdDish(Ordered_Dish x, List<Ordered_Dish> ordDishList)
         {
             bool available = true;
             if (x.ordDishID > 0)
@@ -100,7 +100,7 @@ namespace BL
             return available;
         }
 
-        public bool addOrder(Order x)
+        public bool addOrder(Order x, List<Order> orderList)
         {
             bool available = true;
             if (x.orderID > 0)
@@ -128,12 +128,10 @@ namespace BL
                 orderList.Add(x);
             return available;
         }
-        #endregion
         //DELETE
-        #region // delete functions
-        public bool deleteBranch(int x)
+        public bool deleteBranch(int x, List<Branch> branchList)
         {
-            Branch tempB = getBranch(x);
+            Branch tempB = getBranch(x, branchList);
             if (tempB != null)
             {
                 branchList.Remove(tempB);
@@ -143,9 +141,9 @@ namespace BL
                 return false;
         }
 
-        public bool deleteDish(int x)
+        public bool deleteDish(int x, List<Dish> dishList)
         {
-            Dish tempD = getDish(x);
+            Dish tempD = getDish(x, dishList);
             if (tempD == null)
                 return false;
             else
@@ -155,9 +153,9 @@ namespace BL
             }
         }
 
-        public bool deleteOrdDish(int x)
+        public bool deleteOrdDish(int x, List<Ordered_Dish> ordDishList)
         {
-            Ordered_Dish tempOD = getOrdDish(x);
+            Ordered_Dish tempOD = getOrdDish(x, ordDishList);
             if (tempOD == null)
                 return false;
             else
@@ -167,9 +165,9 @@ namespace BL
             }
         }
 
-        public bool deleteOrder(int x)
+        public bool deleteOrder(int x, List<Order> orderList)
         {
-            Order tempO = getOrder(x);
+            Order tempO = getOrder(x, orderList);
             if (tempO == null)
                 return false;
             else
@@ -178,12 +176,10 @@ namespace BL
                 return true;
             }
         }
-        #endregion
         //UPDATE
-        #region // update functions
-        public bool updateBranch(Branch x)
+        public bool updateBranch(Branch x, List<Branch> branchList)
         {
-            Branch tempB = getBranch(x.branchID);
+            Branch tempB = getBranch(x.branchID, branchList);
             if (tempB != null)
             {
                 branchList.Remove(tempB);
@@ -194,9 +190,9 @@ namespace BL
                 return false;
         }
 
-        public bool updateDish(Dish x)
+        public bool updateDish(Dish x, List<Dish> dishList)
         {
-            Dish tempD = getDish(x.dishID);
+            Dish tempD = getDish(x.dishID, dishList);
             if (tempD != null)
             {
                 dishList.Remove(tempD);
@@ -207,9 +203,9 @@ namespace BL
                 return false;
         }
 
-        public bool updateOrdDish(Ordered_Dish x)
+        public bool updateOrdDish(Ordered_Dish x, List<Ordered_Dish> ordDishList)
         {
-            Ordered_Dish tempOD = getOrdDish(x.ordDishID);
+            Ordered_Dish tempOD = getOrdDish(x.ordDishID, ordDishList);
             if (tempOD != null)
             {
                 ordDishList.Remove(tempOD);
@@ -220,9 +216,9 @@ namespace BL
                 return false;
         }
 
-        public bool updateOrder(Order x)
+        public bool updateOrder(Order x, List<Order> orderList)
         {
-            Order tempO = getOrder(x.orderID);
+            Order tempO = getOrder(x.orderID, orderList);
             if (tempO != null)
             {
                 orderList.Remove(tempO);
@@ -232,9 +228,7 @@ namespace BL
             else
                 return false;
         }
-        #endregion
         //SUM
-        #region // Sum functions
         public List<Branch> sumBranch()
         {
             return branchList;
@@ -249,10 +243,8 @@ namespace BL
         {
             return orderList;
         }
-        #endregion
-        //GETS - Search engines to find the class in it's respective list.
-        #region // Get functions
-        public Dish getDish(int dishID)
+        //GETS
+        public Dish getDish(int dishID, List<Dish> dishList)
         {
             foreach (Dish item in dishList)
                 if (item.dishID == dishID)
@@ -260,7 +252,7 @@ namespace BL
             return null;
         }
 
-        public Order getOrder(int orderID)
+        public Order getOrder(int orderID, List<Order> orderList)
         {
             foreach (Order item in orderList)
                 if (item.orderID == orderID)
@@ -268,7 +260,7 @@ namespace BL
             return null;
         }
 
-        public Ordered_Dish getOrdDish(int OrdDishID)
+        public Ordered_Dish getOrdDish(int OrdDishID, List<Ordered_Dish> ordDishList)
         {
             foreach (Ordered_Dish item in ordDishList)
                 if (item.ordDishID == OrdDishID)
@@ -276,25 +268,27 @@ namespace BL
             return null;
         }
 
-        public Branch getBranch(int branchID)
+        public Branch getBranch(int branchID, List<Branch> branchList)
         {
             foreach (Branch item in branchList)
                 if (item.branchID == branchID)
                     return item;
             return null;
         }
-        #endregion
-        #endregion
+#endregion
 
-        public double SumMoneyDishes(List<Ordered_Dish> x)
+        public double SumMoneyDishes(Branch x)
         {
             double sumMoney = 0;
-            foreach (Ordered_Dish item in x)
+            foreach (Order mainItem in x.listOrderforBranch)
             {
-                double temp = findDishPrice(item.ordDishID); // sending to func we created to find and return dish price.
-                for (int i = 0; i < item.ordDishNum; i++)
+                foreach (Ordered_Dish item in mainItem.listofOrderedDishes)
                 {
-                    sumMoney += temp;
+                    double temp = findDishPrice(item.ordDishID, x.listDishforBranch); // sending to func we created to find and return dish price.
+                    for (int i = 0; i < item.ordDishNum; i++)
+                    {
+                        sumMoney += temp;
+                    }
                 }
             }
             return sumMoney;
@@ -315,8 +309,8 @@ namespace BL
           else
             return false;//meaning dish is good
         }
-
-        public List<Order> chooseOrder(Func<Order, bool> predicate = null)
+        
+        public List<Order> chooseOrder(List<Order> orderList, Func<Order, bool> predicate = null)
         {
             var queryAllOrders = from orders in orderList
                                  where (predicate(orders))
@@ -350,7 +344,7 @@ namespace BL
         #endregion
         
         //EXTRA
-        public double findDishPrice(int x)
+        public double findDishPrice(int x, List<Dish> dishList)
         {
             foreach (Dish item in dishList)
             {
@@ -360,22 +354,25 @@ namespace BL
             return 0;
         }
 
-        public Dish mostOrderedDish()
+        public Dish mostOrderedDish(Branch x)
         {
             int counter = 0;
             Dish bestDish = null;
-            foreach (Ordered_Dish item in ordDishList)
+            foreach (Order mainItem in x.listOrderforBranch)
             {
-                if (item.ordDishNum > counter)
+                foreach (Ordered_Dish item in mainItem.listofOrderedDishes)
                 {
-                    counter = item.ordDishNum;
-                    bestDish = getDish(item.ordDishID);
+                    if (item.ordDishNum > counter)
+                    {
+                        counter = item.ordDishNum;
+                        bestDish = getDish(item.ordDishID, x.listDishforBranch);
+                    }
                 }
             }
             return bestDish;
         }//Finds the most ordered dish per Order
         
-        public List<Dish> holierThanThou()
+        public List<Dish> holierThanThou(List<Dish> dishList)
         {
             var queryHolyDish = from dish in dishList
                                 where (int)dish.dishHechserDish >= 2 //he'll prefer a better hescher, but will take high.
@@ -391,7 +388,7 @@ namespace BL
                 return false;
         } // checks if order is high enough for delivery.
 
-        public List<Dish> americanMenu()
+        public List<Dish> americanMenu(List<Dish> dishList)
         {
             var queryAmericanMenu = from dish in dishList
                                     where (int)dish.dishSizeDish >= 2 // he'll prefer a larger dish, but will take large.
@@ -399,12 +396,12 @@ namespace BL
             return (List<Dish>)queryAmericanMenu;
         }//Finds the menu for the Americans.
 
-        public string managerOfTheMonth()
+        public string managerOfTheMonth(List<Branch> branchList)
         {
-            return branchSuccess().branchManager;
+            return branchSuccessMonth(branchList).branchManager;
         }//Finds the manager whose branch made the most money
       
-        public Branch branchSuccessMonth()
+        public Branch branchSuccessMonth(List<Branch> branchList)
         {
             double mostMoney = 0; // Highest amount of money for the Branch
             double sumOrdDishes = 0; // Sum of money from all the ordered dishes of a branch
@@ -414,7 +411,7 @@ namespace BL
                 foreach (Order item in branchitem.listOrderforBranch)
                 {
                     if (item.orderTime.Month == DateTime.Now.Month) // Only consider the orders made within the Month.
-                        sumOrdDishes += SumMoneyDishes(item.listofOrderedDishes);
+                        sumOrdDishes += SumMoneyDishes(branchitem);
                 }
                 if (sumOrdDishes > mostMoney)
                 {
@@ -424,9 +421,9 @@ namespace BL
                 sumOrdDishes = 0;
             }
             return bestBranch;
-        }
+        } // Needs slight fixing
 
-        public List<Branch> rankBranchPerMonth()
+        public List<Branch> rankBranchPerMonth(List<Branch> branchList)
         {
             var queryWhatevra = from item in branchList
                                 from item2 in item.listOrderforBranch
