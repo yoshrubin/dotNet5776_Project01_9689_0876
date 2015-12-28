@@ -11,6 +11,7 @@ namespace BL
 {
     public interface IBL
     {
+        //fix
         //DISH
         bool addDish(Dish x);
         bool deleteDish(int x);

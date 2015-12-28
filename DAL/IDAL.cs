@@ -9,6 +9,7 @@ namespace DAL
 {
     public interface IDAL
     {
+        //fix
         //DISH
         bool addDish(Dish x);
         bool deleteDish(int x);
