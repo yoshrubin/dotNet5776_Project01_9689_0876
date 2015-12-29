@@ -402,7 +402,7 @@ namespace BL
 
         public string managerOfTheMonth()
         {
-            return branchSuccess().branchManager;
+            return branchSuccessMonth().branchManager;
         }//Finds the manager whose branch made the most money
       
         public Branch branchSuccessMonth()
