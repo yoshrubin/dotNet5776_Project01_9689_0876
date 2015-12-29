@@ -10,7 +10,7 @@ namespace BE
     public class Branch
     {
         //ctor
-        public Branch(int branchID, string branchName, string branchAddress, long branchPhoneNum, string branchManager, int branchEmployee, int branchDeliveryFree, branchHechser branchHechserBranch)
+        public Branch(string branchName, string branchAddress, long branchPhoneNum, string branchManager, int branchEmployee, int branchDeliveryFree, branchHechser branchHechserBranch, int branchID = 0)
         {
             this.branchID = branchID;
             this.branchName = branchName;

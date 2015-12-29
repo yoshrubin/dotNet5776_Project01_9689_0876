@@ -429,6 +429,11 @@ namespace BL
 
         public List<Branch> rankBranchPerMonth()
         {
+            throw new NotImplementedException();
+        }
+
+        /*public List<Branch> rankBranchPerMonth(List<Branch> branchList)
+        {
             var queryWhatevra = from item in branchList
                                 from item2 in item.listOrderforBranch
                                 where (item2.orderTime.Month == DateTime.Now.Month)
@@ -436,7 +441,7 @@ namespace BL
                                 select item;
             return queryWhatevra.ToList<Branch>();
 
-        }
+        }*/
 
         //FIND OUT HOW TO USE LAMBDA?!?!?!??!?!?!?!?!?!?!?
     }

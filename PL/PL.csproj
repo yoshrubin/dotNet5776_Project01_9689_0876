@@ -99,6 +99,18 @@
       <Project>{071427ca-fe5c-4bbe-909c-791884d18093}</Project>
       <Name>BE</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{366a7831-c027-462e-a5bc-cdcbf199ac37}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{8d7c8b1e-6943-4336-8a38-7713107c3e50}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DS\DS.csproj">
+      <Project>{ce74a9f4-9c26-4e38-9a26-a78ddacc3999}</Project>
+      <Name>DS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
